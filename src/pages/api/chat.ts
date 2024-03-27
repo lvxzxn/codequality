@@ -1,16 +1,14 @@
-import OpenAI from "openai";
-import { NextApiRequest, NextApiResponse } from "next";
 import createChat from "../controllers/chat";
+import { NextApiRequest, NextApiResponse } from "next";
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse){
-  const chat = await createChat("vai se fode");
-  const content = chat.content as string;
-  let message;
-  try {
-    message = JSON.parse(content);
-  } catch (error) {
-    return res.status(500).json({ error: true, message: "Erro interno do servidor" });
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
+  if (req.method === "POST") {
+    const chat = await createChat(req.body.code);
+    res.status(200).json({ message: chat });
+  } else {
+    res.status(400).json({ mensagem: "Método inválido" });
   }
-  
-  return res.status(200).json(message);
 }
