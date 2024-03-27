@@ -7,6 +7,9 @@ const ChatComponent = () => {
   const [comments, setComments] = useState("");
   const [loading, setLoading] = useState(false);
 
+  const [scoreColor, setScoreColor] = useState("");
+  const [textColor, setTextColor] = useState("");
+
   const handleChange = (event: any) => {
     setCode(event.target.value);
   };
@@ -29,8 +32,21 @@ const ChatComponent = () => {
         const data = await response.json();
         setScore(data.message.score);
         setComments(data.message.comments);
+
+        const scoreValue = data.message.score;
+        if (scoreValue <= 4) {
+          setScoreColor("bg-red-800");
+          setTextColor("text-white");
+        } else if (scoreValue >= 5 && scoreValue <= 7) {
+          setScoreColor("bg-yellow-500");
+          setTextColor("text-black");
+        } else {
+          setScoreColor("bg-green-500");
+          setTextColor("text-black");
+        }
       }
     } catch (error) {
+      console.error("Erro ao processar a solicitação:", error);
     }
 
     setLoading(false);
@@ -56,17 +72,17 @@ const ChatComponent = () => {
       </button>
       {loading && (
         <div className="w-full flex items-center justify-center mt-5 mb-5">
-          <ClipLoader color={"#2563eb"} loading={loading} size={50} /> {}
+          <ClipLoader color={"#2563eb"} loading={loading} size={50} />
         </div>
       )}
       {score !== null && !loading && (
-        <div className="w-full flex items-center justify-center mt-5 mb-5">
-          <div className="bg-red-800 rounded-lg p-6 w-full max-w-full shadow-lg">
-            <p className="text-white text-xl mb-4">
+        <div className={`w-full flex items-center justify-center mt-5 mb-5 ${scoreColor}`}>
+          <div className="rounded-lg p-6 w-full max-w-full shadow-lg">
+            <p className={`${textColor} font-bold text-xl mb-4`}>
               Sua pontuação de código é:{" "}
-              <span className="font-bold text-white">{score}/10</span>
+              <span className={`font-bold ${textColor}`}>{score}/10</span>
             </p>
-            <p className="text-md font-semibold text-gray-300">{comments}</p>
+            <p className={`text-md font-medium ${textColor}`}>{comments}</p>
           </div>
         </div>
       )}
