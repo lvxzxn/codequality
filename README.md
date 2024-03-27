@@ -13,7 +13,7 @@ Code Quality é um projeto desenvolvido para ajudar você a melhorar a qualidade
 1. Clone este repositório:
 
    ```
-   git clone https://github.com/seu-usuario/code-quality.git
+   git clone https://github.com/lvxzxn/code-quality.git
    ```
 
 2. Instale as dependências:
