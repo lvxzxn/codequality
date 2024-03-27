@@ -92,12 +92,21 @@ export default function Home() {
           </button>
         </div>
         <footer className="p-6 bottom-0 text-white text-center mt-9 mb-6 sm:mb-12">
-          {`</>`} por Luiz Guilherme -{" "}
+          {`</> `} por Luiz Guilherme - {" "}
           <Link
             className="text-blue-600 hover:underline hover:cursor-pointer"
             href="https://www.linkedin.com/in/luizgguilherme/"
+            target="_blank"
           >
             LinkedIn
+          </Link>
+          {" - "}
+          <Link
+            className="text-blue-600 hover:underline hover:cursor-pointer"
+            href="https://github.com/lvxzxn/"
+            target="_blank"
+          >
+            Github
           </Link>
         </footer>
       </main>
