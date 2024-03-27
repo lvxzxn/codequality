@@ -19,9 +19,9 @@ Ao fornecer sua avaliação, por favor, retorne os resultados em formato JSON pa
 O JSON deverá informar o score, os comentários e a linguagem utilizada.
 Lembre-se que o JSON é para Javascript, então valores booleanos como false e true não devem ser inicializados com inicial maiúscula.`;
 
-const createChat = async (prompt: string) => {
+const createChat = async (apiKey: string, prompt: string) => {
   const openai = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY,
+    apiKey,
   });
 
   const assistant = await openai.beta.assistants.create({
