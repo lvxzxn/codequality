@@ -56,9 +56,7 @@ const createChat = async (apiKey: string, prompt: string) => {
     const messages = await openai.beta.threads.messages.list(threadId);
     const content = messages.data[0].content[0] as any;
     const message = content.text.value.trim();
-
-    console.log(message);
-
+    
     const messageJson = JSON.parse(message);
 
     const response = {
