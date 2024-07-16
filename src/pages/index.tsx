@@ -15,7 +15,7 @@ export default function Home() {
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      <main className="flex flex-col items-center justify-center min-h-screen py-6 px-4 sm:px-6 lg:px-8 ">
+      <main className="flex flex-col items-center justify-center min-h-screen py-6 px-4 sm:px-6 lg:px-8 bg-black">
         <h1 className="text-3xl sm:text-4xl font-bold text-white text-center">
           Code Quality
         </h1>
